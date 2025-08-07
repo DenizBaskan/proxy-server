@@ -72,8 +72,6 @@ func main() {
 
 			fmt.Printf("%s %s\n", req_data.Method, req_data.Path)
 
-			fmt.Println(req_data.BasicAuth.Password)
-
 			if authenticate && (req_data.BasicAuth.Username != username || req_data.BasicAuth.Password != password) {
 				_, err := conn.Write([]byte("HTTP/1.1 407 Proxy Authentication Required\r\n" +
 					"Proxy-Authenticate: Basic realm=\"Proxy\"\r\n" +
@@ -124,4 +122,5 @@ func main() {
 		}()
 	}
 }
+
 
