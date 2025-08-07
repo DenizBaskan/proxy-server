@@ -25,7 +25,8 @@ func connect(client net.Conn, req RawRequest) {
 
 	target, err := net.Dial("tcp", req.Path) // www.example.com:443
 	if err != nil {
-		panic(err)
+		fmt.Printf("Dial fail %v\n", err)
+		return
 	}
 	defer target.Close()
 
@@ -123,3 +124,4 @@ func main() {
 		}()
 	}
 }
+
